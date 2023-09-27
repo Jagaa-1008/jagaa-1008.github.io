@@ -1214,7 +1214,7 @@ header .circle {
 
 .footer {
   background-color: #222;
-  padding: 6rem 0;
+  padding: 1rem;
 }
 
 .footer .grid-4 {
@@ -1286,8 +1286,8 @@ header .circle {
 }
 
 .bottom-footer {
-  margin-top: 5.5rem;
-  padding: 0 1.7rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
