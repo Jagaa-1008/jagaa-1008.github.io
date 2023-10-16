@@ -1,0 +1,15 @@
+/* Add mobile styles here */
+nav ul {
+    display: none;
+    background-color: #333; /* Background color for the mobile menu */
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul.active {
+    display: block;
+  }
+  

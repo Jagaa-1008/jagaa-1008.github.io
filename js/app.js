@@ -50,6 +50,47 @@ $(".grid").isotope({
   transitionDuration: "0.6s",
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuToggle.addEventListener("click", function () {
+    if (mobileMenu.style.display === "none" || mobileMenu.style.display === "") {
+      mobileMenu.style.display = "block";
+    } else {
+      mobileMenu.style.display = "none";
+    }
+  });
+});
+
+document.querySelector('.btn').addEventListener('click', () => {
+  const mailto = 'mailto:jagaa.hn@gmail.com';
+  const subject = 'Your Subject Here';
+  const emailBody = 'Your email content here';
+
+  const mailtoLink = `${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+
+  // Create a temporary <a> element to trigger the email client
+  const tempLink = document.createElement('a');
+  tempLink.href = mailtoLink;
+  tempLink.style.display = 'none';
+  document.body.appendChild(tempLink);
+
+  // Trigger the click event on the temporary link
+  tempLink.click();
+
+  // Remove the temporary link from the DOM
+  document.body.removeChild(tempLink);
+
+  // Clear the form
+  document.querySelector('.contact-input[name="message"]').value = '';
+  document.querySelector('.contact-input[name="email"]').value = '';
+  document.querySelector('.contact-input[name="first-name"]').value = '';
+  document.querySelector('.contact-input[name="last-name"]').value = '';
+  document.querySelector('.contact-input[name="phone"]').value = '';
+});
+
+
 window.addEventListener("scroll", () => {
   skillsEffect();
   countUp();

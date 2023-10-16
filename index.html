@@ -56,8 +56,28 @@
             </div>
 
             <div class="hamburger-menu">
-              <div class="bar"></div>
+              <button id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+              </button>
             </div>
+
+            <div id="mobile-menu" class="mobile-menu">
+              <ul>
+                <li>
+                  <a href="#info">About</a>
+                </li>
+                <li>
+                  <a href="#projects">Projects</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
+                  <a href="docs\Resume_Artag_Jargalsaikhan.pdf" class="active">Resume</a>
+                </li>
+              </ul>
+            </div>            
+
           </div>
         </nav>
 
@@ -218,12 +238,11 @@
                   placeholder="Message"
                 ></textarea>
               </div>
-              <a href="#" class="btn">Send</a>
+              <button type="button" class="btn" id="sendButton"onclick="sendMessage()">Send</button>
             </div>
           </div>
         </div>
       </section>
-
 
     <footer class="footer">
       <div class="container">
@@ -257,5 +276,38 @@
     <script src="./js/isotope.pkgd.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#mobile-menu-toggle").click(function() {
+          $("#mobile-menu").toggle();
+        });
+      });
+      </script>      
+      <script>
+        function sendMessage() {
+          const firstName = document.querySelector('input[name="first_name"]').value;
+          const lastName = document.querySelector('input[name="last_name"]').value;
+          const phone = document.querySelector('input[name="phone"]').value;
+          const email = document.querySelector('input[name="email"]').value;
+          const message = document.querySelector('textarea[name="message"]').value;
+  
+          const subject = `Contact Form Submission from ${firstName} ${lastName}`;
+          const mailto = "mailto:jagaa.hn@gmail.com";
+          const emailBody = `Name: ${firstName} ${lastName}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`;
+          const mailtoLink = `${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+  
+          // Send the email
+          window.location.href = mailtoLink;
+  
+          // Clear the form fields
+          document.querySelector('input[name="first_name"]').value = '';
+          document.querySelector('input[name="last_name"]').value = '';
+          document.querySelector('input[name="phone"]').value = '';
+          document.querySelector('input[name="email"]').value = '';
+          document.querySelector('textarea[name="message"]').value = '';
+        }
+      </script>
+
   </body>
 </html>
