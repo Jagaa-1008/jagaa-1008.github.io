@@ -50,20 +50,9 @@ $(".grid").isotope({
   transitionDuration: "0.6s",
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
+document.querySelector('.btn').addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent the form from submitting if it's in a <form>
 
-  mobileMenuToggle.addEventListener("click", function () {
-    if (mobileMenu.style.display === "none" || mobileMenu.style.display === "") {
-      mobileMenu.style.display = "block";
-    } else {
-      mobileMenu.style.display = "none";
-    }
-  });
-});
-
-document.querySelector('.btn').addEventListener('click', () => {
   const mailto = 'mailto:jagaa.hn@gmail.com';
   const subject = 'Your Subject Here';
   const emailBody = 'Your email content here';
@@ -88,7 +77,11 @@ document.querySelector('.btn').addEventListener('click', () => {
   document.querySelector('.contact-input[name="first-name"]').value = '';
   document.querySelector('.contact-input[name="last-name"]').value = '';
   document.querySelector('.contact-input[name="phone"]').value = '';
+
+  // Display a success message
+  alert('I will get back to you as soon as possible.');
 });
+
 
 
 window.addEventListener("scroll", () => {

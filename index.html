@@ -214,31 +214,19 @@
             <div class="contact-form">
               <h3 class="title">Contact me</h3>
               <div class="row">
-                <input
-                  type="text"
-                  class="contact-input"
-                  placeholder="First Name"
-                />
-                <input
-                  type="text"
-                  class="contact-input"
-                  placeholder="Last Name"
-                />
+                <input type="text" class="contact-input" name="first_name" placeholder="First Name" />
+                <input type="text" class="contact-input" name="last_name" placeholder="Last Name" />
               </div>
-
+  
               <div class="row">
-                <input type="text" class="contact-input" placeholder="Phone" />
-                <input type="email" class="contact-input" placeholder="Email" />
+                <input type="text" class="contact-input" name="phone" placeholder="Phone" />
+                <input type="email" class="contact-input" name="email" placeholder="Email" />
               </div>
-
+  
               <div class="row">
-                <textarea
-                  name="message"
-                  class="contact-input textarea"
-                  placeholder="Message"
-                ></textarea>
+                <textarea name="message" class="contact-input textarea" placeholder="Message"></textarea>
               </div>
-              <button type="button" class="btn" id="sendButton"onclick="sendMessage()">Send</button>
+              <button type="button" class="btn" id="sendButton" onclick="sendMessage()">Send</button>
             </div>
           </div>
         </div>
