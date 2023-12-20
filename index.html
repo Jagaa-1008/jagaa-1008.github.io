@@ -20,16 +20,24 @@
         <div class="overlay overlay-lg">
           <img src="./img/shapes/square.png" class="shape square" alt="" />
           <img src="./img/shapes/circle.png" class="shape circle" alt="" />
-          <img
-            src="./img/shapes/half-circle.png"
-            class="shape half-circle1"
-            alt=""
-          />
-          <img
-            src="./img/shapes/half-circle.png"
-            class="shape half-circle2"
-            alt=""
-          />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle1" alt="" />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle2" alt="" />
+          <img src="./img/shapes/x.png" class="shape xshape" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave1" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave2" alt="" />
+          <img src="./img/shapes/triangle.png" class="shape triangle" alt="" />
+          <img src="./img/shapes/square.png" class="shape square" alt="" />
+          <img src="./img/shapes/circle.png" class="shape circle" alt="" />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle1" alt="" />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle2" alt="" />
+          <img src="./img/shapes/x.png" class="shape xshape" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave1" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave2" alt="" />
+          <img src="./img/shapes/triangle.png" class="shape triangle" alt="" />
+          <img src="./img/shapes/square.png" class="shape square" alt="" />
+          <img src="./img/shapes/circle.png" class="shape circle" alt="" />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle1" alt="" />
+          <img src="./img/shapes/half-circle.png" class="shape half-circle2" alt="" />
           <img src="./img/shapes/x.png" class="shape xshape" alt="" />
           <img src="./img/shapes/wave.png" class="shape wave wave1" alt="" />
           <img src="./img/shapes/wave.png" class="shape wave wave2" alt="" />
@@ -296,6 +304,28 @@
           document.querySelector('textarea[name="message"]').value = '';
         }
       </script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const shapes = document.querySelectorAll('.overlay img');
+            shapes.forEach(shape => {
+                let moveX = Math.random() * 2 - 1;
+                let moveY = Math.random() * 2 - 1;
+
+                setInterval(function() {
+                    let currentTransform = shape.style.transform.match(/translate\((.*)px, (.*)px\)/);
+                    let currentX = currentTransform ? parseFloat(currentTransform[1]) : 0;
+                    let currentY = currentTransform ? parseFloat(currentTransform[2]) : 0;
+
+                    if (currentX + moveX > 100 || currentX + moveX < -100) moveX *= -1;
+                    if (currentY + moveY > 100 || currentY + moveY < -100) moveY *= -1;
+
+                    shape.style.transform = `translate(${currentX + moveX}px, ${currentY + moveY}px)`;
+                    shape.style.transition = 'transform 1s linear';
+                }, 100);
+            });
+        });
+    </script>
 
   </body>
 </html>
