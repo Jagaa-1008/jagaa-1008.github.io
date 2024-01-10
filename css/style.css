@@ -472,10 +472,10 @@ header .circle {
 /* Services */
 
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+  gap: 1.7rem;
   justify-content: space-around;
-  flex-wrap: wrap;
-  width: 100%;
 }
 
 .card-wrap {

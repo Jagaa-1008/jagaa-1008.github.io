@@ -82,7 +82,22 @@ document.querySelector('.btn').addEventListener('click', (e) => {
   alert('I will get back to you as soon as possible.');
 });
 
+window.onload = function equalizeCardHeights() {
+  var cards = document.querySelectorAll('.card');
+  var maxHeight = 0;
 
+  // Find the tallest card
+  cards.forEach(function(card) {
+    if (card.offsetHeight > maxHeight) {
+      maxHeight = card.offsetHeight;
+    }
+  });
+
+  // Set all cards to the tallest height
+  cards.forEach(function(card) {
+    card.style.height = maxHeight + 'px';
+  });
+};
 
 window.addEventListener("scroll", () => {
   skillsEffect();
