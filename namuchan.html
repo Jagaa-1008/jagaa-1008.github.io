@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Namu-chan Tanjoubi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Set a perspective on the body for 3D transforms */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0e5d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: sans-serif;
+      perspective: 800px;
+    }
+
+    /* Envelope container that moves away when clicked */
+    .envelope-container {
+      position: absolute;
+      transition: all 1s ease-in-out;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Envelope styling with a heartbeat animation */
+    .envelope {
+      width: 250px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%   { transform: scale(1); }
+      14%  { transform: scale(1.1); }
+      28%  { transform: scale(1); }
+      42%  { transform: scale(1.1); }
+      70%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Letter styling:
+       - Positioned in the center
+       - Initially "rolled up" with rotateX(-90deg)
+       - Hidden with opacity 0 */
+    .letter {
+      position: absolute;
+      width: 680px;
+      max-width: 90%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateX(-90deg);
+      transform-origin: top center;
+      opacity: 0;
+      transition: transform 1s 0.3s ease-out, opacity 1s 0.3s ease-out;
+      z-index: 1;
+    }
+
+    /* Active state for the envelope container:
+       Moves the envelope far to the right and upward,
+       scales it down, and rotates it slightly */
+    .envelope-container.open {
+      transform: translate(300px, -200px) scale(0.4) rotate(-15deg);
+    }
+
+    /* When the letter is revealed, it rotates from -90deg to 0deg,
+       making it appear as if it is unrolling into view */
+    .letter.reveal {
+      transform: translate(-50%, -50%) rotateX(0deg);
+      opacity: 1;
+    }
+
+    /* Responsive adjustments for mobile devices */
+    @media (max-width: 600px) {
+      .envelope {
+        width: 150px;
+      }
+      .envelope-container.open {
+        transform: translate(200px, -150px) scale(0.5) rotate(-15deg);
+      }
+      .letter {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Envelope container (clicking this moves the envelope away) -->
+  <div class="envelope-container" id="envelopeContainer">
+    <img src="envelope.png" alt="Envelope" class="envelope">
+  </div>
+
+  <!-- Letter that will be revealed (unrolls from the envelope) -->
+  <img src="letter.jpeg" alt="Letter" class="letter" id="letter">
+
+  <script>
+    document.getElementById('envelopeContainer').addEventListener('click', function() {
+      // Add class to move envelope away
+      this.classList.add('open');
+      // Add class to reveal (unroll) the letter
+      document.getElementById('letter').classList.add('reveal');
+    });
+  </script>
+</body>
+</html>
