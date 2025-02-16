@@ -31,6 +31,7 @@
     .envelope {
       width: 250px;
       animation: heartbeat 1.5s infinite;
+      transition: opacity 1s ease-in-out;
     }
 
     @keyframes heartbeat {
@@ -66,6 +67,11 @@
       transform: translate(300px, -200px) scale(0.4) rotate(-15deg);
     }
 
+    /* When the envelope container is open, the envelope image fades out */
+    .envelope-container.open .envelope {
+      opacity: 0;
+    }
+
     /* When the letter is revealed, it rotates from -90deg to 0deg,
        making it appear as if it is unrolling into view */
     .letter.reveal {
@@ -98,9 +104,9 @@
 
   <script>
     document.getElementById('envelopeContainer').addEventListener('click', function() {
-      // Add class to move envelope away
+      // Add class to move the envelope container away and fade out the envelope
       this.classList.add('open');
-      // Add class to reveal (unroll) the letter
+      // Reveal (unroll) the letter by rotating it into view
       document.getElementById('letter').classList.add('reveal');
     });
   </script>
